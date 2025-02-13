@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kviz</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+        body {
+            font-family: "Kalam", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #ff69b4, #9198e5);
+            margin: 0;
+        }
+        .kraj {
+            font-size: x-large;
+        }
+        .question-container {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            background-color: #fff;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .hidden-text {
+            display: none;
+            margin-top: 10px;
+            background-color: #e0ffe0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: "Kalam", sans-serif;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .submit-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="kraj">
+        <h1>I ZA KRAJ...</h1>
+    </div>
+    <div class="question-container" id="question1">
+        <div class="question">Koja je moja omiljena hrana?</div>
+        <input type="text" id="answer1">
+        <button class="submit-button" onclick="checkAnswer('answer1', 'sarma', 'text1')">Submit</button>
+        <div class="hidden-text" id="text1">Ovo je tekst 1 koji se otkriva nakon tačnog odgovora na pitanje 1.</div>
+    </div>
+
+    <div class="question-container" id="question2">
+        <div class="question">Koji je moj dream car?</div>
+        <input type="text" id="answer2">
+        <button class="submit-button" onclick="checkAnswer('answer2', 'Porshe 911', 'text2')">Submit</button>
+        <div class="hidden-text" id="text2">Ovo je tekst 2 koji se otkriva nakon tačnog odgovora na pitanje 2.</div>
+    </div>
+
+    <div class="question-container" id="question3">
+        <div class="question">Kako mi se macak zove?</div>
+        <input type="text" id="answer3">
+        <button class="submit-button" onclick="checkAnswer('answer3', 'macak', 'text3')">Submit</button>
+        <div class="hidden-text" id="text3">Ovo je tekst 3 koji se otkriva nakon tačnog odgovora na pitanje 3.</div>
+    </div>
+
+    <div class="question-container" id="question4">
+        <div class="question">Jel znas koliko te volim?</div>
+        <input type="text" id="answer4">
+        <button class="submit-button" onclick="checkAnswer('answer4', 'mnogo', 'text4')">Submit</button>
+        <div class="hidden-text" id="text4">Ovo je tekst 4 koji se otkriva nakon tačnog odgovora na pitanje 4.</div>
+    </div>
+    <a href="newNextPage.html">
+        <button id="nextButton">Prethodna strana</button>
+    <script>
+        function checkAnswer(inputId, correctAnswer, textId) {
+            const userAnswer = document.getElementById(inputId).value.trim().toLowerCase();
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                document.getElementById(textId).style.display = 'block';
+            } else {
+                alert('Pogrešan odgovor. Pokušaj ponovo.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #3f2626;
+}
+
+.heart{
+    position:fixed;
+    top:-1vh;
+    transform:translateY(0);
+    animation:rain 6s linear forwards;
+    font-size:2rem;
+    color: #ff69b4;
+    /* Prevent any rotation */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+ }
+ 
+ @keyframes rain{
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(105vh) rotate(0deg);
+    }
+ }
+body {
+  position: relative;
+  color: #222;
+  font-family: "Kalam", sans-serif;
+  min-height: 100vh;
+}
+main {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+p {
+  line-height: 1;
+}
+a {
+  color: royalblue;
+  text-decoration: none;
+}
+#gallery {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 40px;
+  padding: 0 40px 20px 40px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+#gallery figure {
+  flex: 0 0 calc(33.333% - 28px);
+  height: 80vh;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+#gallery figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+figcaption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 18px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#gallery figure:nth-child(7n) {
+  --duration: 1s;
+  --pin-color: #0ff;
+}
+#gallery figure:nth-child(7n + 1) {
+  --duration: 1.8s;
+  --pin-color: #dbdb2b;
+}
+#gallery figure:nth-child(7n + 2) {
+  --duration: 1.3s;
+  --pin-color: #00f077;
+}
+#gallery figure:nth-child(7n + 3) {
+  --duration: 1.5s;
+  --pin-color: #ea4597;
+}
+#gallery figure:nth-child(7n + 4) {
+  --duration: 1.1s;
+  --pin-color: #6f9ac6;
+}
+#gallery figure:nth-child(7n + 5) {
+  --duration: 1.6s;
+  --pin-color: #9452d7;
+}
+#gallery figure:nth-child(7n + 6) {
+  --duration: 1.2s;
+  --pin-color: #ff7f00;
+}
+#gallery figure:nth-child(3n) {
+  --angle: 3deg;
+}
+#gallery figure:nth-child(3n + 1) {
+  --angle: -3.3deg;
+}
+#gallery figure:nth-child(3n + 2) {
+  --angle: 2.4deg;
+}
+#gallery figure:nth-child(odd) {
+  --direction: alternate;
+}
+#gallery figure:nth-child(even) {
+  --direction: alternate-reverse;
+}
+#gallery figure {
+  --angle: 3deg;
+  --count: 5;
+  --duration: 1s;
+  --delay: calc(-0.5 * var(--duration));
+  --direction: alternate;
+  --pin-color: red;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 /1;
+  text-align: center;
+  background-color: white;
+  
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  filter: brightness(125%);
+
+  transform-origin: center 0.22rem;
+  will-change: transform;
+  break-inside: avoid;
+  overflow: hidden;
+  outline: 1px solid transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+#gallery figure.active {
+  animation-duration: var(--duration), 1.5s;
+  animation-delay: var(--delay),
+    calc(var(--delay) + var(--duration) * var(--count));
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: var(--count), 1;
+  animation-direction: var(--direction), normal;
+  animation-fill-mode: both;
+  animation-name: swing, swingEnd;
+}
+#gallery figure:after {
+  position: absolute;
+  top: 0.22rem;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  content: "";
+  background: var(--pin-color);
+  border-radius: 50%;
+  box-shadow: -0.15rem -0.15rem 0.4rem 0.03rem rgba(0, 0, 0, 0.7) inset;
+  filter: drop-shadow(0.35rem 0.18rem 0.2rem rgba(0, 0, 0, 0.7));
+  transform: translateZ(0);
+}
+figure figcaption {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #888;
+  line-height: 1;
+  /*
+  background: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(3px);
+  
+  text-stroke: 0.5px rgba(20, 20, 20, 0.5);
+	-webkit-text-stroke: 0.5px rgba(20, 20, 20, 0.5);
+  */
+  filter: invert(1);
+  mix-blend-mode: difference;
+  transform: translateZ(0);
+}
+figure h2 {
+  color: royalblue;
+  font-size: 24px;
+}
+figure p {
+  font-size: 17px;
+}
+figure small {
+  font-size: 15px;
+}
+figure svg {
+  width: 10px;
+}
+@keyframes swing {
+  0% {
+    transform: rotate3d(0, 0, 1, calc(-1 * var(--angle)));
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, var(--angle));
+  }
+}
+@keyframes swingEnd {
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+#info {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+#info a {
+  font-size: 1.1rem;
+}
+@media (min-width: 800px) {
+  #gallery {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* Customize scrollbar appearance */
+#gallery::-webkit-scrollbar {
+  height: 12px;  /* Height of horizontal scrollbar */
+}
+
+#gallery::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+#gallery::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+#gallery::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Add these styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+}
+
+.modal-content img {
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    display: block;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Update heart styles */
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.heart {
+  position: fixed;
+  color: #ff69b4; /* Pink color for hearts */
+  z-index: 1;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-text {
+    color: #ff69b4;
+    font-size: 3rem;
+    font-family: "Kalam", sans-serif;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Update the figcaption styles */
+figcaption.rotating-text {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    color: white;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    animation: scrollText 10s linear infinite;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Update existing figcaption styles to not interfere */
+figure figcaption {
+    mix-blend-mode: normal;
+    filter: none;
+}
+
+.next-page-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    font-family: "Kalam", sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.next-page-button:hover {
+    background-color: #ff1493;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}

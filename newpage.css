@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+        
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    font-family: "Kalam", sans-serif;
+    color: #fff;
+}
+
+.puzzle-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 20px;
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.puzzle-piece {
+    position: absolute;
+    border: 1px solid #ff69b4;
+    cursor: move;
+    transition: transform 0.2s;
+    background-size: 600px 600px;
+}
+
+.puzzle-piece.correct {
+    border-color: #00ff00;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "Kalam", sans-serif;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.win-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.win-message.show {
+    display: block;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.back-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "Kalam", sans-serif;
+    transition: transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-button:hover {
+    background-color: #ff1493;
+    transform: scale(1.1);
+}
+
+.next-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "Kalam", sans-serif;
+    transition: transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.next-button:hover {
+    transform: scale(1.1);
+    background-color: #ff1493;
+}
